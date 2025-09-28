@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>禅音入眠</title>
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <link href="./css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <script src="./js/vue.min.js"></script>
+   
+  </head>
+  <body>
+    <div id="app" class="container">
+        <audio id="audioPlayer" ref="audioPlayer" :src="songUrl" autoplay>
+        </audio>
+        <audio id="audioPlayer2" ref="audioPlayer2" :src="songUrl2" autoplay>
+        </audio>
+      <div class="selebox" v-if="showbox === 1" >
+          <div class="seleboxtitle2"></div>
+          <div class="shuomin">
+          <ul>
+              <li>【禅音入眠】旨在为失眠者提供一个催眠环境，帮助您集中精神在娓娓的禅音和细雨声中入睡.</li>
+              <li>第一步，选择小、中、大庙创建总数量；</li>
+              <li>第二步，选择背景音乐</li>
+              <li>第三步，点击开始后会每5秒跳出一位和尚，并伴随铃声，您可以滑动屏幕亮度旋钮到最左边，闭眼静心听铃声计数；</li>
+              <li>第四步，计数完成会打开结果页面，显示总数，您可以选择【继续】重新开始计数，也可以选择【退出】结束程序。如果您没有操作，恭喜您，成功入睡。</li>
+              <li class="jiazhong">注意！因小程序不支持息屏后多线程音频播放，请勿手动锁屏，锁屏后将不会有计数铃声。</li>
+          </ul>
+          <div class="selbutton" @click="gzsm('gzsm.mp3',false)" style="width:60vw">语音朗读《规则说明》</div>
+          <div class="selbutton" @click="step(7)">下一步</div>
+          </div>
+      </div>
+  
+      <div class="selebox" v-if="showbox === 6" style="top:5vh">
+          <div class="shuomin">
+          <ul>
+              <li>本次计数已结束，此庙中和尚总数是</li>
+              <li style="font-size: 10vw;color:#e12;text-align: center;">{{hsnum}}人</li>
+              <li>您数对了吗？ 选择【继续】，重新开始计数，您也可以选择下方【退出】关闭此游戏，谢谢！</li>
+              <li>如果您没有操作，恭喜您，睡着了！</li>
+          </ul>
+          <div class="selbutton" @click="step(2)">继 续</div>
+          </div>
+      </div>
+  
+      <div class="selebox"  v-if="showbox === 2">
+          <div class="seleboxtitle"></div>
+          <div class="selesmall" @click="stepMiao(100,150)" data-sm="100" data-lg="150"></div>
+          <div class="selemiddle" @click="stepMiao(300,500)" data-sm="300" data-lg="500"></div>
+          <div class="selelarge" @click="stepMiao(800,1000)" data-sm="800" data-lg="1000"></div>
+      0
+      </div>
+  
+      <div class="starbox"  v-if="showbox === 3">
+          <div class="starbtn" @click="daojs('A')"></div>
+      </div>
+  
+      <div class="starbox" v-if="showbox === 4">
+          <div class="djs">{{jishi}}</div>
+      </div>
+  
+      <div class="house" v-if="showbox === 5">
+          <div class="shownb">{{hscont}}/{{hsnum}}</div>
+          <div v-if="hsanimen" :class="'monk'+hs" class=" animated fadeInUp " style="z-index: 9999;"></div>
+          <div v-for="(item,index) in hsList" :key="index" :class="item.class" :style="{'top':item.top,'left':item.left,'z-index':index}"></div>
+      </div>
+  
+      <div class="" v-if="showbox === 7">
+          <div class="seleboxtitle3"></div>
+          <div v-for="(item2,index) in musicList" :key="index" class="musicitem" @click="step(2,item2.value)" >{{item2.name}}</div>
+      </div>
+      
+      <!-- <div class="ScreenLight">
+                  <text class="ScreenLighttitle">屏幕亮度</text>
+                  <div class="ScreenLightdiv">
+                      <slider model:value="ScreenLight" bindchange="changeScreenLight" block-size="16" block-color="#bbdcd3" backgroundColor="#006644"/>
+                  </div>
+              </div> -->
+      <div class="selbutton exitbtn" @click="back">首页</div>
+    </div>
+</body>
+<script>
+    document.write("<script src='./js/site.js?ver=" + Math.random() * 10 + "'></s" + "cript>")
+</script>
+</html>

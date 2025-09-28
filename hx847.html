@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>禅音入眠</title>
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <link href="./css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/vue.min.js"></script>
+
+  </head>
+  <body>
+    <div id="app" class="container">
+      <audio id="audioPlayer" ref="audioPlayer" :src="songUrl" autoplay>
+      </audio>
+      <audio id="audioPlayer2" ref="audioPlayer2" :src="songUrl2" autoplay>
+      </audio>
+      <div class="" v-if="showbox==1">
+        <div class="seleboxtitle3"></div>
+        <div v-for="(item,index) in musicList" v-key="index" class="musicitem" @click="step(3,item.value)" >{{item.name}}</div>
+      </div>
+      <div class="starbox" v-if="showbox==3">
+        <div class="starbtn" @click="daojs('B')"></div>
+        <div class="shuomin" style="left:-20vw">
+          <ul>
+            <li>请闭上眼睛和嘴巴</li>
+            <li>跟着口令用鼻子吸气</li>
+            <li>准备好之后点击【开始】</li>
+            <li>30分钟后将自动关闭声音</li>
+          </ul>
+        </div>
+      </div>    
+      <div class="starbox" v-if="showbox==4">
+        <div class="djs">{{jishi}}</div>
+      </div>
+      <div class="fullblank" v-if="showbox==2">
+      </div>
+    
+      <div class="starbox" v-if="showbox==5">
+        <div class="starhx" ></div>
+      </div>  
+      <div class="selbutton exitbtn" @click="back">首页</div>
+    </div>
+</body>
+<script>
+  document.write("<script src='./js/site.js?ver=" + Math.random() * 10 + "'></s" + "cript>")
+</script>
+</html>

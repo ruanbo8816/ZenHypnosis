@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>禅音入眠</title>
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <link href="./css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container">
+        <audio id="audioPlayer" ref="audioPlayer" :src="songUrl" autoplay>
+        </audio>
+        <audio id="audioPlayer2" ref="audioPlayer2" src="/music/hailang.mp3" autoplay loop>
+        </audio>
+        <div class="starbox" v-if="showbox==1">
+          <div class="starbtn" @click="daojs('C')"></div>
+        </div>
+      
+        <div class="starbox" v-if="showbox==4">
+          <div class="djs">{{jishi}}</div>
+        </div>
+        <div class="fullblank" v-if="showbox==2">
+        </div>
+      
+        <div class="starbox" v-if="showbox==5">
+          <div class="starhx" ></div>
+            </div>
+        
+        <!-- <div class="ScreenLight">
+                  <text class="ScreenLighttitle">屏幕亮度</text>
+                  <div class="ScreenLightdiv">
+                      <slider model:value="{{ScreenLight}}" bindchange="changeScreenLight" block-size="16" block-color="#bbdcd3" backgroundColor="#006644"/>
+                  </div>
+              </div> -->
+              
+        <div class="selbutton again" @click="replay(1)">重 来</div>
+        <div class="selbutton exitbtn" @click="back">首页</div>
+    </div>
+</body>
+<script>
+  document.write("<script src='./js/site.js?ver=" + Math.random() * 10 + "'></s" + "cript>")
+</script>
+</html>
